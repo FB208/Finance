@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Finance.App_Start;
 
 namespace Finance
 {
@@ -15,7 +16,14 @@ namespace Finance
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RegisterView();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void RegisterView()
+        {
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new MyRouteConfig());
         }
     }
 }
