@@ -16,7 +16,7 @@ namespace Finance
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            RegisterView();
+            //RegisterView();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 

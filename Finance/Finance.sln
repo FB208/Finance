@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.MongoDB", "Framework.MongoDB\Framework.MongoDB.csproj", "{64C0579A-CF14-47ED-9700-76014528262F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{DCFF51E5-AF42-472C-85F3-DEE235BE5690}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{64C0579A-CF14-47ED-9700-76014528262F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64C0579A-CF14-47ED-9700-76014528262F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64C0579A-CF14-47ED-9700-76014528262F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCFF51E5-AF42-472C-85F3-DEE235BE5690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCFF51E5-AF42-472C-85F3-DEE235BE5690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCFF51E5-AF42-472C-85F3-DEE235BE5690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCFF51E5-AF42-472C-85F3-DEE235BE5690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

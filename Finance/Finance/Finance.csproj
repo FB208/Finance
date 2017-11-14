@@ -158,8 +158,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\MyRouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Client\HomeController.cs" />
-    <Compile Include="Controllers\Client\MongoDBController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\JsonFormatController.cs" />
+    <Compile Include="Controllers\MongoDBController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +190,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -201,11 +203,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Client\_Layout.cshtml" />
-    <Content Include="Views\Client\Home\Index.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\JsonFormat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Admin\" />
     <Folder Include="Models\" />
     <Folder Include="Views\MongoDB\" />
   </ItemGroup>
@@ -226,6 +228,10 @@
     <ProjectReference Include="..\Framework.MongoDB\Framework.MongoDB.csproj">
       <Project>{64C0579A-CF14-47ED-9700-76014528262F}</Project>
       <Name>Framework.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{DCFF51E5-AF42-472C-85F3-DEE235BE5690}</Project>
+      <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
