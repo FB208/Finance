@@ -3,15 +3,109 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Client/_Layout.cshtml";
 }
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="//resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div id="progressbar"></div>
+
+<div id="progressBox"></div>
+<br />
+<div id="dialogform">
+    <el-button type="text" v-on:click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
+
+    <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+        <el-form :model="form">
+            <el-form-item label="活动名称" :label-width="formLabelWidth">
+                <el-input v-model="form.name" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="活动区域" :label-width="formLabelWidth">
+                <el-select v-model="form.region" placeholder="请选择活动区域">
+                    <el-option label="区域一" value="shanghai"></el-option>
+                    <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button v-on:click="dialogFormVisible = false">取 消</el-button>
+            <el-button type="primary" v-on:click="dialogFormVisible = false">确 定</el-button>
+        </div>
+    </el-dialog>
+</div>
 <script>
     $(function() {
-        $("#progressbar").progressbar({
-            value: 37
-        });
+        var dialogform = {
+            data() {
+                return {
+                    gridData: [
+                        {
+                            date: '2016-05-02',
+                            name: '王小虎',
+                            address: '上海市普陀区金沙江路 1518 弄'
+                        }, {
+                            date: '2016-05-04',
+                            name: '王小虎',
+                            address: '上海市普陀区金沙江路 1518 弄'
+                        }, {
+                            date: '2016-05-01',
+                            name: '王小虎',
+                            address: '上海市普陀区金沙江路 1518 弄'
+                        }, {
+                            date: '2016-05-03',
+                            name: '王小虎',
+                            address: '上海市普陀区金沙江路 1518 弄'
+                        }
+                    ],
+                    dialogTableVisible: false,
+                    dialogFormVisible: false,
+                    form: {
+                        name: '',
+                        region: '',
+                        date1: '',
+                        date2: '',
+                        delivery: false,
+                        type: [],
+                        resource: '',
+                        desc: ''
+                    },
+                    formLabelWidth: '120px'
+                };
+            }
+        };
+        var Ctor = Vue.extend(dialogform)
+        new Ctor().$mount('#dialogform')
     });
 </script>
+@section scripts{
+    <script>
+        $(function () {
+            var barHtml = "<div id='{id}' key='{key}' class='progress' style='height:50px;border-radius:0px;margin:0px;'>";
+            barHtml += " <div class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width:{width}%;background-color:{bgcolor};'>";
+            barHtml += "   <span style='float:left;position:absolute;left:10px;;margin-top:10px;font-size:1.6em;color:#1c76b3;'>{text}</span>";
+            barHtml += "  </div>";
+            barHtml += "   </div>";
+            var color = new Array("#BDB0AA", "#F2D0E1", "#EF8666", "#F6C86A", "#DAB9D8", "#C7E5DD", "#F9BE08", "#BCD64E", "#9BB6C7", "#BDB0AA");
+            $.ajax({
+                type: "GET",
+                url: "/Client/GetMMData",
+                //data: {username:$("#username").val(), content:$("#content").val()},
+                dataType: "json",
+                success: function (data) {
+                    var $progressBox = $("#progressBox");
+                    var base = data.BaseData.KindMoney;
+                    var surplus = data.Data.KindMoney;
+                    for (var i = 0; i < base.length; i++) {
+                        var thisBarHtml = barHtml;
+                        thisBarHtml = thisBarHtml.replace("{id}", "progress" + i);
+                        thisBarHtml = thisBarHtml.replace("{key}", base[i].Key);
+                        thisBarHtml = thisBarHtml.replace("{width}", surplus[i].Value / base[i].Value * 100);
+                        thisBarHtml = thisBarHtml.replace("{text}", base[i].Key + ":" + surplus[i].Value);
+                        thisBarHtml = thisBarHtml.replace("{bgcolor}", color[i]);
+                        $progressBox.append(thisBarHtml);
+                        $(document).on("click", "#progress" + i, function() {
+                            alert($(this).attr("key"));
+                        });
+
+                    }
+                    console.log(data);
+
+                }
+            });
+        });
+    </script>
+}

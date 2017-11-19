@@ -12,6 +12,10 @@ namespace Models.FinanceDB
     {
         public string Year { get; set; }
         public string Month { get; set; }
-        public Dictionary<string, double> KindMoney { get; set; }
+        /// <summary>
+        /// 0=初始值 1=剩余值
+        /// </summary>
+        public int Type { get; set; }
+        public List<KeyValueClass<double>> KindMoney { get; set; }
     }
 }

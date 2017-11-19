@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DCFF51E5-AF42-472C-85F3-DEE235BE5690}</ProjectGuid>
+    <ProjectGuid>{BC2F8761-54D6-452D-B6BA-19BF4D655A42}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Models</RootNamespace>
-    <AssemblyName>Models</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <RootNamespace>Finance.IService</RootNamespace>
+    <AssemblyName>Finance.IService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Framework">
-      <HintPath>..\Framework.MongoDB\lib\Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,18 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FinanceDB\FamilyGroup.cs" />
-    <Compile Include="FinanceDB\FinanceRatio.cs" />
-    <Compile Include="FinanceDB\KeyValueClass.cs" />
-    <Compile Include="FinanceDB\MoneyStream.cs" />
-    <Compile Include="FinanceDB\MonthMoney.cs" />
+    <Compile Include="IClass1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Framework.MongoDB\Framework.MongoDB.csproj">
-      <Project>{64c0579a-cf14-47ed-9700-76014528262f}</Project>
-      <Name>Framework.MongoDB</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

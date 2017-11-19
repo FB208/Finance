@@ -11,6 +11,6 @@ namespace Models.FinanceDB
     public class FinanceRatio: MongoEntity
     {
         public string FamilyName { get; set; }
-        public Dictionary<string, double> ratio { get; set; }
+        public List<KeyValueClass<double>> ratio { get; set; }
     }
 }

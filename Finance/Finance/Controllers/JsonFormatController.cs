@@ -34,14 +34,53 @@ namespace Finance.Controllers
             FinanceRatio fr = new FinanceRatio
             {
                 FamilyName = "MyFamily",
-                ratio = new Dictionary<string, double>() { }
+                ratio = new List<KeyValueClass<double>>() { }
             };
-            fr.ratio.Add("存储", 0.4);
-            fr.ratio.Add("投资", 0.2);
-            fr.ratio.Add("梦想基金", 0.1);
-            fr.ratio.Add("零花-杨", 0.15);
-            fr.ratio.Add("零花-汪", 0.15);
-            fr.ratio.Add("生活基金", 3000);
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "存储",
+                Value = 0.4
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "投资",
+                Value =0.2
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "梦想基金",
+                Value =0.1
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "零花-杨",
+                Value =0.15
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "零花-汪",
+                Value =0.15
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "^生活基金",
+                Value = 600
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "^十二",
+                Value = 250
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "^吃和交通-杨",
+                Value = 900
+            });
+            fr.ratio.Add(new KeyValueClass<double>
+            {
+                Key = "^吃和交通-汪",
+                Value = 800
+            });
             string jsonStr2 = JsonConvert.SerializeObject(fr);
             //入账
             MoneyStream ms = new MoneyStream
@@ -62,8 +101,8 @@ namespace Finance.Controllers
             };
             string jsonStr3 = JsonConvert.SerializeObject(fr);
 
-            new MongoDbService().Add<MoneyStream>("FinanceDB","MoneyStream",ms);
-            new MongoDbService().Add<MoneyStream>("FinanceDB", "MoneyStream", ms2);
+            //new MongoDbService().Add<MoneyStream>("FinanceDB","MoneyStream",ms);
+            //new MongoDbService().Add<MoneyStream>("FinanceDB", "MoneyStream", ms2);
             return View();
         }
     }
